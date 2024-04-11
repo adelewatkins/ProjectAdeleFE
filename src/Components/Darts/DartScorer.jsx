@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from "axios";
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import DisplayDartsGames from './DisplayDartsGames';
 
 
 function DartScorer() {
+  const navigate = useNavigate();
   const [gameType, setGameType] = useState("");
   const [playerOneName, setPlayerOneName] = useState("");
   const [playerTwoName, setPlayerTwoName] = useState("");
+  const [games, setGames] = useState([]);
+
+  function getGames() {
+    axios.get("http://localhost:8082/darts/get").then((response) => {
+      setGames(response.data);
+    });
+  }
+  useEffect(getGames, []);
 
 
   return (
@@ -18,7 +30,7 @@ function DartScorer() {
 
 
       <fieldset style={{ display: "inline-block" }}>
-        <form style={{backgroundColor: "pink" , borderRadius: "50px", padding: "50px" }}
+        <form style={{ backgroundColor: "pink", borderRadius: "50px", padding: "50px" }}
           onSubmit={(e) => {
             e.preventDefault(); axios.post("http://localhost:8082/darts/create", {
               gameType,
@@ -30,6 +42,7 @@ function DartScorer() {
                 setPlayerOneName("");
                 setPlayerTwoName("");
                 console.log("Game type: " + gameType + ". " + "Player1: " + playerOneName + ". " + "Player2: " + playerTwoName);
+                getGames();
               })
               .catch((err) => console.error(err));
           }}>
@@ -61,10 +74,15 @@ function DartScorer() {
 
           <br />
 
-          <button type='submit' className='btn btn-success btn-md'>Start Game</button>
+          <button
+            type="submit"
+            className="btn btn-success btn-md">
+            Start Game</button>
 
         </form>
       </fieldset>
+
+      <DisplayDartsGames games={games} getGames={getGames} />
 
     </div>
   );

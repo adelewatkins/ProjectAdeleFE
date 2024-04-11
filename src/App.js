@@ -7,6 +7,7 @@ import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AboutMe from './Components/AboutMe/AboutMe';
 import Dog from './Components/Dog/Dog';
 import DartScorer from './Components/Darts/DartScorer';
+import PlayGame from './Components/Darts/PlayGame';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/adele" element={<AboutMe />} />
           <Route path="/dog" element={<Dog />} />
           <Route path="/darts" element={<DartScorer />} />
+          <Route path="/darts/playgame/:id" element={<PlayGame />} />
         </Routes>
       </Router>
 
