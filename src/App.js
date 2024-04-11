@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.min.js";
 import Home from './Components/Home';
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AboutMe from './Components/AboutMe/AboutMe';
 import Dog from './Components/Dog/Dog';
 import DartScorer from './Components/Darts/DartScorer';
+
 
 function App() {
   return (
