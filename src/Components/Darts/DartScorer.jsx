@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import DisplayDartsGames from './DisplayDartsGames';
 
 
-function DartScorer() {
+function DartScorer(props) {
   const navigate = useNavigate();
   const [gameType, setGameType] = useState("");
   const [playerOneName, setPlayerOneName] = useState("");
@@ -77,7 +77,7 @@ function DartScorer() {
           <button
             type="submit"
             className="btn btn-success btn-md">
-            Start Game</button>
+            Create Game</button>
 
         </form>
       </fieldset>

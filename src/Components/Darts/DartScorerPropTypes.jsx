@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card"
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import  Button  from 'react-bootstrap/Button';
 
 
 
@@ -15,6 +16,7 @@ DartScorerPropTypes.propTypes = {
 }
 
 function DartScorerPropTypes(props) {
+    const navigate = useNavigate();
 
 
     return (
@@ -28,7 +30,7 @@ function DartScorerPropTypes(props) {
                         <p>Starting at {props.gameType}</p>
                         <p></p>
                     </Card.Text>
-                    {/* <Button variant="primary">Go somewhere</Button> */}
+                    <Button onClick={() => navigate("/darts/playgame/" + props.id)}variant="primary">Go To Game</Button> 
                 </Card.Body>
             </Card>
 
