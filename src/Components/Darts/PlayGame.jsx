@@ -12,18 +12,24 @@ function PlayGame() {
     const [playerTwoName, setPlayerTwoName] = useState("");
     const [gameDetails, setGameDetails] = useState();
 
-    function getGameInfo(){
+    function getGameDetails(){
         axios.get("http://localhost:8082/darts/get/" + params.id)
         .then((response) => {setGameDetails(response.data)
+            
         })
         .catch((err) => console.error(err))
     }
-    useEffect(getGameInfo, [])
-    console.log(gameDetails);
+    useEffect(getGameDetails, [])
+    console.log(gameDetails)
+    
 
 
     return (  
+        <div>
         <h1>Play Game</h1>
+        
+
+        </div>
     );
 }
 
