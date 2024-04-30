@@ -16,21 +16,26 @@ function PlayGame() {
     let [p2Score, setP2Score] = useState()
     let [amountScored, setAmountScored] = useState()
 
+   
+    
     const handleP1Submit = () => {
-        setP1Score(p1Score - parseInt(amountScored));
+        const p1newScore = p1Score - parseInt(amountScored);
+        if (p1newScore < 0) {
+            alert(`Bust - Amount scored will take ${playerOneName}'s score below 0!`);
+            return; // Don't update the score if it will go below 0
+        }
+        setP1Score(p1newScore);
         setAmountScored('');
-        axios.put("http://localhost:8082/darts/update/" + params.id, {
-        p1Score
-      })
     };
 
     const handleP2Submit = () => {
-        setP2Score(p2Score - parseInt(amountScored));
+        const p2newScore = p2Score - parseInt(amountScored);
+        if (p2newScore < 0) {
+            alert(`Bust - Amount scored will take ${playerTwoName}'s score below 0!`);
+            return; // Don't update the score if it will go below 0
+        }
+        setP2Score(p2newScore);
         setAmountScored('');
-
-      axios.put("http://localhost:8082/darts/update/" + params.id, {
-        p2Score
-      })
     };
 
     function getGameDetails() {
@@ -39,6 +44,8 @@ function PlayGame() {
                 setGameDetails(response.data)
                 setP1Score(response.data.gameType);
                 setP2Score(response.data.gameType);
+                setPlayerOneName(response.data.playerOneName)
+                setPlayerTwoName(response.data.playerTwoName)
             })
             .catch((err) => console.error(err))
     }
