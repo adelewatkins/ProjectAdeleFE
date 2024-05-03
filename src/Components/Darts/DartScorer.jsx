@@ -23,10 +23,10 @@ function DartScorer(props) {
   return (
 
     <div>
-      <br />
+      
       <h1>Darts</h1>
       <br />
-      <br />
+      
 
 
       <fieldset style={{ display: "inline-block" }}>

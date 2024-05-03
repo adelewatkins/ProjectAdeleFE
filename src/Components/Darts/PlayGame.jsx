@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { CardBody, Container } from "react-bootstrap";
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -79,6 +82,8 @@ function PlayGame() {
             <h1>Play Game</h1>
             <br />
             <br />
+            <Card style={{margin: 'auto', width: '60%'}}>
+                <Card.Body>
             <div class="col">
                 {gameDetails ? (
                     <div>
@@ -101,10 +106,12 @@ function PlayGame() {
                         />
                     </label>
                 </form>
-                <button onClick={handleP1Submit}>Submit Player 1 Score</button>
-                <button onClick={handleP2Submit}>Submit Player 2 Score</button>
+                <Button variant="outline-primary" onClick={handleP1Submit}>Submit Player 1 Score</Button>
+                <Button variant="outline-success" onClick={handleP2Submit}>Submit Player 2 Score</Button>
 
             </div>
+            </Card.Body>
+            </Card>
         </div>
 
     );

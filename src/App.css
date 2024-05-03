@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  /* background-color: darkkhaki; */
 }
 
 .App-logo {
@@ -36,6 +37,10 @@
     transform: rotate(360deg);
   }
 
+}
+h1, h2, h3, h4, h5, h6 {
+  color: pink !important;
+  font-weight: 700  !important;
 }
 
 /* body {
